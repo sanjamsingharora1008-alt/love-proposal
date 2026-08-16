@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Love ❤️</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    min-height: 100vh;
+    color: white;
+    overflow-x: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #160014,
+            #4b082d,
+            #18001d
+        );
+}
+
+/* Background stars */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.22;
+
+    background-image:
+        radial-gradient(#ffffff 1px, transparent 1px);
+
+    background-size: 32px 32px;
+}
+
+/* Pages */
+
+.page {
+    display: none;
+
+    min-height: 100vh;
+
+    padding: 30px 18px;
+
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+.page.active {
+    display: flex;
+}
+
+/* Main card */
+
+.card {
+    width: min(900px, 94vw);
+
+    padding: 42px 28px;
+
+    border-radius: 28px;
+
+    background: rgba(255,255,255,0.09);
+
+    backdrop-filter: blur(14px);
+
+    border: 1px solid rgba(255,255,255,0.18);
+
+    box-shadow:
+        0 20px 80px rgba(0,0,0,0.45);
+
+    text-align: center;
+}
+
+/* Headings */
+
+h1 {
+    font-size: clamp(2.2rem, 7vw, 5rem);
+
+    color: #ffd1e5;
+
+    text-shadow:
+        0 0 25px #ff4f9a;
+
+    margin-bottom: 18px;
+}
+
+h2 {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+
+    color: #ffd5e8;
+
+    margin-bottom: 20px;
+}
+
+/* Paragraph */
+
+p {
+    font-size: 1.08rem;
+
+    line-height: 1.8;
+
+    color: #ffeaf3;
+}
+
+/* Heart */
+
+.heart {
+    font-size: 4.5rem;
+
+    animation: pulse 1.3s infinite;
+}
+
+@keyframes pulse {
+
+    50% {
+        transform: scale(1.18);
+    }
+
+}
+
+/* Password */
+
+input {
+
+    width: min(330px, 90%);
+
+    padding: 15px 18px;
+
+    margin: 22px 0 12px;
+
+    border-radius: 14px;
+
+    border: 2px solid #ff76aa;
+
+    background: rgba(0,0,0,0.25);
+
+    color: white;
+
+    text-align: center;
+
+    font-size: 1.1rem;
+
+    outline: none;
+}
+
+input::placeholder {
+    color: #ffc4d9;
+}
+
+/* Buttons */
+
+button {
+
+    border: 0;
+
+    border-radius: 999px;
+
+    padding: 13px 25px;
+
+    margin: 8px;
+
+    font-size: 1rem;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff3f86,
+            #b81768
+        );
+
+    box-shadow:
+        0 8px 25px rgba(255,63,134,0.3);
+
+    transition: 0.2s;
+}
+
+button:hover {
+
+    transform:
+        translateY(-2px)
+        scale(1.03);
+}
+
+/* Error */
+
+.error {
+
+    height: 25px;
+
+    color: #ff9fbe;
+}
+
+/* Letter */
+
+.letter {
+
+    text-align: left;
+
+    background:
+        rgba(255,255,255,0.06);
+
+    padding: 28px;
+
+    border-radius: 20px;
+
+    border-left:
+        4px solid #ff72a9;
+
+    margin: 20px 0;
+}
+
+.letter p {
+
+    margin-bottom: 16px;
+}
+
+.signature {
+
+    text-align: right;
+
+    color: #ffb7d1;
+
+    font-size: 1.2rem;
+}
+
+/* Reasons */
+
+.reasons {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(190px, 1fr)
+        );
+
+    gap: 15px;
+
+    margin: 25px 0;
+}
+
+.reason {
+
+    padding: 22px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    font-size: 1.05rem;
+
+    color: #ffe8f1;
+}
+
+/* Memory */
+
+.memory {
+
+    margin: 20px 0;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,80,140,0.15),
+            rgba(255,255,255,0.06)
+        );
+}
+
+/* Big question */
+
+.big-question {
+
+    font-size:
+        clamp(
+            2rem,
+            6vw,
+            4rem
+        );
+
+    color: #ffd3e5;
+
+    margin: 25px 0;
+}
+
+/* No button */
+
+#noBtn {
+
+    position: relative;
+}
+
+/* Floating hearts */
+
+#hearts {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 10;
+}
+
+.floating-heart {
+
+    position: absolute;
+
+    bottom: -30px;
+
+    font-size: 24px;
+
+    animation:
+        float 5s linear forwards;
+}
+
+@keyframes float {
+
+    to {
+
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+/* Small text */
+
+.small {
+
+    font-size: 0.9rem;
+
+    opacity: 0.75;
+
+    margin-top: 15px;
+}
+
+/* Final screen */
+
+.final-message {
+
+    font-size: 1.4rem;
+
+    color: #ffd5e8;
+
+    margin-top: 20px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- Floating hearts -->
+
+<div id="hearts"></div>
+
+
+
+<!-- ========================= -->
+<!-- PASSWORD PAGE -->
+<!-- ========================= -->
+
+<section class="page active" id="login">
+
+    <div class="card">
+
+        <div class="heart">
+            ❤️
+        </div>
+
+        <h1>
+            Hey, Beautiful
+        </h1>
+
+        <p>
+            There is a little surprise waiting for you...
+        </p>
+
+        <p>
+            Only one person in the world can unlock it.
+        </p>
+
+
+        <input
+            id="password"
+            type="password"
+            placeholder="Enter your birthdate"
+        >
+
+
+        <br>
+
+
+        <button onclick="unlock()">
+            Unlock My Heart 💗
+        </button>
+
+
+        <div
+            class="error"
+            id="error">
+        </div>
+
+
+        <p class="small">
+            Hint: DDMMYYYY
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================= -->
+<!-- LOVE LETTER -->
+<!-- ========================= -->
+
+<section class="page" id="letter">
+
+    <div class="card">
+
+        <h2>
+            To The Girl Who Stole My Heart 💌
+        </h2>
+
+
+        <div class="letter">
+
+            <p>
+                My love,
+            </p>
+
+
+            <p>
+                I don't know if words can ever completely
+                explain what you mean to me, but I want
+                to try anyway.
+            </p>
+
+
+            <p>
+                Before you, I thought happiness was just
+                a feeling. Then you came into my life and
+                somehow ordinary days became my favourite
+                days.
+            </p>
+
+
+            <p>
+                Your smile can change my mood, your voice
+                can calm my mind, and simply knowing that
+                you are there makes life feel a little more
+                beautiful.
+            </p>
+
+
+            <p>
+                I love the little things about you, the
+                things you probably don't even realize
+                I notice.
+            </p>
+
+
+            <p>
+                I love your laugh, your way of talking,
+                your kindness, your craziness, and every
+                tiny moment that makes you uniquely you.
+            </p>
+
+
+            <p>
+                I can't promise that every day will be
+                perfect. But I can promise that I'll keep
+                choosing you, supporting you, making you
+                smile, and creating beautiful memories
+                with you.
+            </p>
+
+
+            <p>
+                If my heart had a favourite place,
+                it would be wherever you are.
+            </p>
+
+
+            <p>
+                Thank you for being you. ❤️
+            </p>
+
+
+            <p class="signature">
+
+                Forever yours,
+
+                <br>
+
+                <b>
+                    Your favourite person 😉
+                </b>
+
+            </p>
+
+        </div>
+
+
+        <button onclick="showPage('reasons')">
+
+            There's More... 💕
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================= -->
+<!-- REASONS -->
+<!-- ========================= -->
+
+<section class="page" id="reasons">
+
+    <div class="card">
+
+        <h2>
+            Reasons I Love You ❤️
+        </h2>
+
+
+        <div class="reasons">
+
+
+            <div class="reason">
+
+                🌸
+
+                Your smile makes everything better.
+
+            </div>
+
+
+            <div class="reason">
+
+                ✨
+
+                You make ordinary moments special.
+
+            </div>
+
+
+            <div class="reason">
+
+                🫶
+
+                You make me feel understood.
+
+            </div>
+
+
+            <div class="reason">
+
+                😂
+
+                You make me laugh like nobody else.
+
+            </div>
+
+
+            <div class="reason">
+
+                🌙
+
+                You are my favourite thought
+                before I sleep.
+
+            </div>
+
+
+            <div class="reason">
+
+                💖
+
+                You are simply... you.
+
+            </div>
+
+
+        </div>
+
+
+        <button onclick="showPage('memory')">
+
+            One Last Thing →
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================= -->
+<!-- OUR STORY -->
+<!-- ========================= -->
+
+<section class="page" id="memory">
+
+    <div class="card">
+
+        <h2>
+            Our Little Story ✨
+        </h2>
+
+
+        <div class="memory">
+
+            <p>
+
+                Maybe our story started with a simple
+                hello, a conversation, a smile, or a
+                moment neither of us realized would
+                become important.
+
+            </p>
+
+
+            <br>
+
+
+            <p>
+
+                But somehow, that little moment led me
+                here — making an entire website just
+                to tell one very special girl how much
+                she means to me.
+
+            </p>
+
+
+            <br>
+
+
+            <p>
+
+                <b>
+                    And now comes the question I've
+                    been waiting to ask...
+                </b>
+
+            </p>
+
+        </div>
+
+
+        <button onclick="showPage('question')">
+
+            Ask Me 💗
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================= -->
+<!-- PROPOSAL -->
+<!-- ========================= -->
+
+<section class="page" id="question">
+
+    <div class="card">
+
+        <div class="heart">
+            💝
+        </div>
+
+
+        <h2>
+            So, My Love...
+        </h2>
+
+
+        <div class="big-question">
+
+            Will you be mine forever? 🥹❤️
+
+        </div>
+
+
+        <button onclick="yesAnswer()">
+
+            YES! ❤️
+
+        </button>
+
+
+        <button
+            id="noBtn"
+            onmouseover="moveNo()">
+
+            No 😭
+
+        </button>
+
+
+        <p
+            id="answer"
+            style="margin-top:20px">
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================= -->
+<!-- THANK YOU -->
+<!-- ========================= -->
+
+<section class="page" id="thankyou">
+
+    <div class="card">
+
+        <div class="heart">
+            💖
+        </div>
+
+
+        <h2>
+            Thank You, My Love ❤️
+        </h2>
+
+
+        <div class="letter">
+
+
+            <p>
+
+                Thank you for choosing me and for being
+                such a beautiful part of my life.
+
+            </p>
+
+
+            <p>
+
+                You have no idea how happy you just made
+                me. Every smile, every conversation, and
+                every little moment with you means more
+                to me than I can explain.
+
+            </p>
+
+
+            <p>
+
+                Today isn't just a "yes" to me.
+                It's a memory I will keep close to my
+                heart forever. 💕
+
+            </p>
+
+
+            <p>
+
+                <b>
+                    Thank you for being mine. ❤️
+                </b>
+
+            </p>
+
+
+        </div>
+
+
+        <button onclick="showPage('promise')">
+
+            Read My Promise 🤞
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================= -->
+<!-- PROMISE -->
+<!-- ========================= -->
+
+<section class="page" id="promise">
+
+    <div class="card">
+
+
+        <div class="heart">
+
+            🤞❤️
+
+        </div>
+
+
+        <h2>
+
+            My Promise To You
+
+        </h2>
+
+
+        <div class="letter">
+
+
+            <p>
+
+                I promise to respect you, support you,
+                listen to you, and always try to make
+                you smile.
+
+            </p>
+
+
+            <p>
+
+                I promise to stand beside you when
+                things are easy and when things are
+                difficult.
+
+            </p>
+
+
+            <p>
+
+                I promise to appreciate the little
+                things, protect the trust between us,
+                and never take your love for granted.
+
+            </p>
+
+
+            <p>
+
+                I can't promise that everything will
+                always be perfect, but I can promise
+                that I'll always give us my honest
+                effort and choose you again and again.
+
+            </p>
+
+
+            <p>
+
+                <b>
+
+                    This is my little promise to you —
+                    today, tomorrow, and every day after. ❤️
+
+                </b>
+
+            </p>
+
+
+        </div>
+
+
+        <div class="big-question">
+
+            This is only the beginning
+            of our story... ❤️
+
+        </div>
+
+
+        <p class="final-message">
+
+            I love you.
+            Forever and always. 💍
+
+        </p>
+
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+
+/* ================================= */
+/* PASSWORD */
+/* ================================= */
+
+/*
+    HER BIRTHDATE:
+
+    12 July 2007
+
+    Format:
+    DDMMYYYY
+
+    Password:
+    12072007
+*/
+
+
+const correctPassword = "12072007";
+
+
+function unlock() {
+
+    const value =
+        document
+        .getElementById("password")
+        .value
+        .trim();
+
+
+    const error =
+        document
+        .getElementById("error");
+
+
+    if (value === correctPassword) {
+
+        error.textContent = "";
+
+        showPage("letter");
+
+        startHearts();
+
+    }
+
+    else {
+
+        error.textContent =
+            "Hmm... that's not the secret birthday 💔";
+
+    }
+
+}
+
+
+
+/* ================================= */
+/* CHANGE PAGE */
+/* ================================= */
+
+
+function showPage(id) {
+
+    document
+        .querySelectorAll(".page")
+        .forEach(
+            p =>
+            p.classList.remove("active")
+        );
+
+
+    document
+        .getElementById(id)
+        .classList.add("active");
+
+
+    window.scrollTo(0, 0);
+
+}
+
+
+
+/* ================================= */
+/* NO BUTTON */
+/* ================================= */
+
+
+function moveNo() {
+
+    const btn =
+        document
+        .getElementById("noBtn");
+
+
+    const x =
+        (Math.random() * 240) - 120;
+
+
+    const y =
+        (Math.random() * 160) - 80;
+
+
+    btn.style.transform =
+        `translate(${x}px, ${y}px)`;
+
+}
+
+
+
+/* ================================= */
+/* YES BUTTON */
+/* ================================= */
+
+
+function yesAnswer() {
+
+
+    document
+        .getElementById("answer")
+        .innerHTML =
+
+        "YAAAAAY! ❤️ I knew it! " +
+        "You just made me the happiest person alive. " +
+        "💍🥹";
+
+
+    /* Celebration */
+
+    for (
+        let i = 0;
+        i < 50;
+        i++
+    ) {
+
+        setTimeout(
+            createHeart,
+            i * 70
+        );
+
+    }
+
+
+    /*
+        After celebration,
+        open Thank You page.
+    */
+
+    setTimeout(
+        function () {
+
+            showPage("thankyou");
+
+        },
+        3000
+    );
+
+}
+
+
+
+/* ================================= */
+/* CREATE HEART */
+/* ================================= */
+
+
+function createHeart() {
+
+
+    const h =
+        document.createElement("div");
+
+
+    h.className =
+        "floating-heart";
+
+
+    h.textContent =
+        [
+            "❤️",
+            "💖",
+            "💕",
+            "💗",
+            "💘",
+            "✨",
+            "💝"
+        ]
+        [
+            Math.floor(
+                Math.random() * 7
+            )
+        ];
+
+
+    h.style.left =
+        Math.random() * 100 + "vw";
+
+
+    h.style.animationDuration =
+        (
+            3 +
+            Math.random() * 4
+        ) + "s";
+
+
+    h.style.fontSize =
+        (
+            18 +
+            Math.random() * 25
+        ) + "px";
+
+
+    document
+        .getElementById("hearts")
+        .appendChild(h);
+
+
+    setTimeout(
+        () => h.remove(),
+        7000
+    );
+
+}
+
+
+
+/* ================================= */
+/* AUTOMATIC HEARTS */
+/* ================================= */
+
+
+function startHearts() {
+
+
+    setInterval(
+        function () {
+
+
+            if (
+
+                document
+                .getElementById("letter")
+                .classList
+                .contains("active")
+
+            ) {
+
+                createHeart();
+
+            }
+
+
+        },
+        700
+    );
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
